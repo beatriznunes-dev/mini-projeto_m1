@@ -1,18 +1,14 @@
 // Importa os dados dos estudantes
 import { estudantes } from "../Banco_de_dados/dados.js";
 
-// ========================
-// Função auxiliar
-// ========================
+
 function calcularMediaEstudante(estudante) {
   if (!estudante.notas || estudante.notas.length === 0) return 0;
   const soma = estudante.notas.reduce((total, nota) => total + nota, 0);
   return soma / estudante.notas.length;
 }
 
-// ========================
-// 1. Relatório de Desempenho (geral)
-// ========================
+
 export function gerarRelatorioDesempenho() {
   if (estudantes.length === 0) {
     console.log("Nenhum estudante cadastrado para gerar o relatório.");
@@ -28,9 +24,7 @@ export function gerarRelatorioDesempenho() {
   });
 }
 
-// ========================
-// 2. Relatório de Aprovados
-// ========================
+
 export function relatorioAprovados() {
   const aprovados = estudantes.filter(est => calcularMediaEstudante(est) >= 7);
 
@@ -45,9 +39,7 @@ export function relatorioAprovados() {
   });
 }
 
-// ========================
-// 3. Relatório de Recuperação
-// ========================
+
 export function relatorioRecuperacao() {
   const recuperacao = estudantes.filter(est => {
     const media = calcularMediaEstudante(est);
@@ -65,9 +57,7 @@ export function relatorioRecuperacao() {
   });
 }
 
-// ========================
-// 4. Relatório de Estatísticas da Turma
-// ========================
+
 export function relatorioEstatisticas() {
   if (estudantes.length === 0) {
     console.log("Nenhum estudante cadastrado para gerar o relatório de estatísticas.");
@@ -88,7 +78,7 @@ export function relatorioEstatisticas() {
   console.log(`- Nota mínima registrada: ${notaMinima}`);
   console.log(`- Nota máxima registrada: ${notaMaxima}`);
 }
-// Relatório de Reprovados
+
 export function relatorioReprovados() {
   const reprovados = estudantes.filter(est => calcularMediaEstudante(est) < 5);
 
